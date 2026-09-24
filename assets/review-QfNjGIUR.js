@@ -1,0 +1,1 @@
+import{p as e}from"./content-87Cmzron.js";function t(t){let n=new Map;for(let r of t){let t=e(r.itemId),i=n.get(t);i&&i.reviewType!==`idiom`||n.set(t,{itemId:t,kind:r.itemType===`sentence`?`sentence`:`word`,review:!0,reviewType:r.itemType})}return[...n.values()]}export{t};
