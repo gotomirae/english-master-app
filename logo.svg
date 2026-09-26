@@ -1,5 +1,80 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="96" fill="#2563eb"/>
-  <text x="256" y="330" font-family="Arial, Helvetica, sans-serif" font-size="220" font-weight="700" fill="#ffffff" text-anchor="middle">EM</text>
-  <rect x="136" y="370" width="240" height="20" rx="10" fill="#fbbf24"/>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0" stop-color="#312e81"/>
+      <stop offset="0.55" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.5" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#e879f9"/>
+    </linearGradient>
+    <linearGradient id="grid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0.55"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <clipPath id="tile"><rect width="512" height="512" rx="112"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#tile)">
+    <rect width="512" height="512" fill="url(#bg)"/>
+
+    <!-- 별 -->
+    <g fill="#e0f2fe">
+      <circle cx="72" cy="88" r="2.5" opacity="0.8"/>
+      <circle cx="140" cy="46" r="1.8" opacity="0.6"/>
+      <circle cx="430" cy="70" r="2.6" opacity="0.9"/>
+      <circle cx="468" cy="160" r="1.6" opacity="0.6"/>
+      <circle cx="44" cy="210" r="1.8" opacity="0.5"/>
+      <circle cx="372" cy="36" r="1.5" opacity="0.6"/>
+      <circle cx="250" cy="30" r="1.4" opacity="0.5"/>
+    </g>
+
+    <!-- 원근 격자 지평선 -->
+    <g stroke="url(#grid)" stroke-width="2" fill="none">
+      <path d="M0 392 H512 M0 420 H512 M0 456 H512 M0 502 H512"/>
+      <path d="M256 380 L256 512 M256 380 L150 512 M256 380 L362 512 M256 380 L40 512 M256 380 L472 512 M256 380 L-80 512 M256 380 L592 512"/>
+    </g>
+
+    <!-- 후광 -->
+    <circle cx="256" cy="236" r="130" fill="#6366f1" opacity="0.35" filter="url(#soft)"/>
+
+    <!-- 궤도 링 -->
+    <g filter="url(#glow)" fill="none" stroke="url(#neon)">
+      <ellipse cx="256" cy="236" rx="190" ry="62" stroke-width="7" transform="rotate(-18 256 236)" opacity="0.9"/>
+    </g>
+
+    <!-- 육각형 코어 -->
+    <g filter="url(#glow)">
+      <path d="M256 92 L380 164 L380 308 L256 380 L132 308 L132 164 Z" fill="#0b1026" fill-opacity="0.75" stroke="url(#neon)" stroke-width="9" stroke-linejoin="round"/>
+    </g>
+
+    <!-- E 글자 + 발음 파형 -->
+    <g filter="url(#glow)" fill="url(#neon)">
+      <rect x="186" y="160" width="26" height="152" rx="8"/>
+      <rect x="186" y="160" width="118" height="26" rx="8"/>
+      <rect x="186" y="286" width="118" height="26" rx="8"/>
+      <!-- 가운데 가로획이 음성 파형으로 이어짐 -->
+      <rect x="186" y="223" width="64" height="26" rx="8"/>
+      <rect x="258" y="214" width="12" height="44" rx="6"/>
+      <rect x="278" y="200" width="12" height="72" rx="6"/>
+      <rect x="298" y="218" width="12" height="36" rx="6"/>
+      <rect x="318" y="228" width="12" height="16" rx="6"/>
+    </g>
+
+
+    <!-- 위성 -->
+    <g filter="url(#glow)">
+      <circle cx="382" cy="153" r="14" fill="#f0abfc"/>
+      <circle cx="109" cy="316" r="9" fill="#67e8f9"/>
+    </g>
+  </g>
 </svg>
